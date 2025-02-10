@@ -45,14 +45,14 @@ export const Login = () => {
   };
 
   return (
-    <div className="p-[30px_27px_31px] justify-center items-center min-h-screen flex">
-      <div className="flex gap-[120px] justify-center items-center ">
+    <div className="p-[30px_27px_31px] max-w-[1597px] mx-auto relative justify-center items-center min-h-screen flex">
+      <div className="flex gap-[120px] w-full justify-center items-center ">
         <div className="flex flex-col max-w-[456px] w-full h-full relative justify-center lg:ml-auto">
           <Image
             src={"/assets/images/png/page-logo.png"}
             width={167}
             height={31.71}
-            className="pointer-events-none"
+            className="pointer-events-none absolute"
             alt="page logo"
           />
           <h1 className="font-semibold text-3xl leading-[58.45px] text-dark tracking-[1.22px]">
@@ -156,7 +156,7 @@ export const Login = () => {
         <div className="max-w-[759px] max-lg:hidden w-full h-[899px] bg-blue rounded-[20px] flex justify-center items-center">
           <Image
             src={"/assets/images/png/layer-image.png"}
-            className="pointer-events-none"
+            className="pointer-events-none max-2xl:w-10/12"
             width={617.58}
             height={541.41}
             alt="layer image"
