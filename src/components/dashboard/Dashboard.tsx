@@ -63,11 +63,11 @@ const Dashboard = () => {
             Welcome to Dashboard
           </h1>
         </div>
-        {page === "button1" ? (
+        {page === "button-1" ? (
           <p>First page</p>
-        ) : page === "button2" ? (
+        ) : page === "button-2" ? (
           <p>Second page</p>
-        ) : page === "button3" ? (
+        ) : page === "button-3" ? (
           <ImageUpload />
         ) : null}
       </div>

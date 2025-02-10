@@ -5,8 +5,7 @@ const ImageUpload = () => {
   const [image, setImage] = useState([]);
   const [_, setUrl] = useState(null);
 
-  const uploadImage = (e) => {
-    const file = e.target.files[0];
+  const uploadImage = (e: any) => {
     const url = URL.createObjectURL(e.target.files[0]);
     setUrl(url);
     setImage([...image, url]);
@@ -18,6 +17,9 @@ const ImageUpload = () => {
 
   return (
     <div className="p-10">
+      <h2 className="pb-5 text-2xl font-inter font-semibold">
+        Add Your image{" "}
+      </h2>
       <input multiple onChange={uploadImage} hidden type="file" id="connect" />
       <label
         htmlFor="connect"
@@ -35,7 +37,7 @@ const ImageUpload = () => {
               <img
                 className="max-w-100% w-full object-cover group-hover:scale-110 transition-all duration-300"
                 src={item}
-                alt=""
+                alt="image"
               />
             </div>
           );
