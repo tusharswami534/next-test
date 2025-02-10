@@ -7,8 +7,8 @@ const ImageUpload = () => {
 
   const uploadImage = (e: any) => {
     const url = URL.createObjectURL(e.target.files[0]);
-    setUrl(url);
-    setImage([...image, url]);
+    setUrl(url as any);
+    setImage([...image, url] as any);
   };
 
   const deleteImage = () => {
@@ -20,7 +20,7 @@ const ImageUpload = () => {
       <h2 className="pb-5 text-2xl font-inter font-semibold">
         Add Your image{" "}
       </h2>
-      <input multiple onChange={uploadImage} hidden type="file" id="connect" />
+      <input onChange={uploadImage} hidden type="file" id="connect" />
       <label
         htmlFor="connect"
         className="bg-blue py-[10px] px-[20px] rounded text-white cursor-pointer"
@@ -28,7 +28,7 @@ const ImageUpload = () => {
         +
       </label>
       <div className="flex gap-5 flex-wrap items-center mb-5">
-        {image.map((item, index) => {
+        {image.map((item: string, index: number) => {
           return (
             <div
               className="w-max overflow-hidden group max-w-[500px] justify-center"

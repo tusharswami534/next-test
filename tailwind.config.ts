@@ -19,6 +19,7 @@ export default {
         'gray-light' : '#D0D5DD',
         'blue-light' : '#007BFF',
         'gray-dark' : '#475467',
+        'white-light' : '#FAFAFF',
       },
     },
   },

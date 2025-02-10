@@ -45,14 +45,14 @@ export const Login = () => {
   };
 
   return (
-    <div className="p-[30px_27px_31px] max-w-[1597px] mx-auto relative justify-center items-center min-h-screen flex">
-      <div className="flex gap-[120px] w-full justify-center items-center ">
-        <div className="flex flex-col max-w-[456px] w-full h-full relative justify-center lg:ml-auto">
+    <div className="p-[30px_27px_31px] max-sm:px-[35px] max-sm:py-[32px] max-w-[1597px] mx-auto  md:justify-center md:items-center min-h-screen flex">
+      <div className="flex gap-[120px] w-full justify-center relative items-center ">
+        <div className="flex flex-col max-w-[456px] w-full h-full md:justify-center lg:ml-auto">
           <Image
             src={"/assets/images/png/page-logo.png"}
             width={167}
             height={31.71}
-            className="pointer-events-none absolute"
+            className="pointer-events-none absolute top-[19px] left-[14%] max-2xl:left-[0%] max-lg:relative max-lg:pb-[130px] max-md:pb-24 max-sm:pb-[90px]"
             alt="page logo"
           />
           <h1 className="font-semibold text-3xl leading-[58.45px] text-dark tracking-[1.22px]">
@@ -71,7 +71,7 @@ export const Login = () => {
                   Enter Your Email
                 </p>
               ) : (
-                <p className="text-gray text-sm leading-[30px]">Email</p>
+                <p className="text-black-light leading-[30px]">Email</p>
               )}
             </label>
             <input
@@ -93,7 +93,7 @@ export const Login = () => {
                   {passwordError || "Enter Your Password"}
                 </p>
               ) : (
-                <p className="text-gray text-sm leading-[30px]">Password</p>
+                <p className="text-black-light leading-[30px]">Password</p>
               )}
             </label>
             <input
@@ -106,10 +106,10 @@ export const Login = () => {
               type="password"
               id="password"
             />
-            <span className="flex justify-between mt-[18px]">
+            <span className="flex justify-between max-sm:flex-col gap-y-3.5 mt-[18px]">
               <span className="flex gap-3 items-center">
                 <input
-                  className="!size-5 !bg-white !rounded-md !border !border-solid !border-gray-light"
+                  className="!size-5 !bg-white-light !rounded-md !border !border-solid !border-gray-light"
                   type="checkbox"
                   id="check"
                   checked={formData.checkbox}
