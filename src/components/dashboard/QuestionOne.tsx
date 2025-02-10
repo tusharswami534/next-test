@@ -14,7 +14,7 @@ const QuestionOne = () => {
     },
   ];
   return (
-    <div>
+    <div className="p-10">
       <p className="text-lg font-semibold"> Q1 .{Question[0].list.data[0].title}</p>
       <p className="font-medium">Ans : {Question[0].list.data[0].options[0]}</p>
     </div>
