@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import ImageUpload from "./ImageUpload";
 import { DASHBOARD_BUTTON_LIST } from "@/utils/helper";
 import Link from "next/link";
+import Calendly from "./Calendly";
+import QuestionOne from "./QuestionOne";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -64,9 +66,9 @@ const Dashboard = () => {
           </h1>
         </div>
         {page === "button-1" ? (
-          <p>First page</p>
+          <QuestionOne />
         ) : page === "button-2" ? (
-          <p>Second page</p>
+          <Calendly />
         ) : page === "button-3" ? (
           <ImageUpload />
         ) : null}
