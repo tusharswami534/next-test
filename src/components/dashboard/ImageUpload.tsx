@@ -3,11 +3,9 @@ import React, { useState } from "react";
 
 const ImageUpload = () => {
   const [image, setImage] = useState([]);
-  const [_, setUrl] = useState(null);
 
   const uploadImage = (e: any) => {
     const url = URL.createObjectURL(e.target.files[0]);
-    setUrl(url as any);
     setImage([...image, url] as any);
   };
 
@@ -20,7 +18,13 @@ const ImageUpload = () => {
       <h2 className="pb-5 text-2xl font-inter font-semibold">
         Add Your image{" "}
       </h2>
-      <input onChange={uploadImage} hidden type="file" id="connect" />
+      <input
+        accept="image/*"
+        onChange={uploadImage}
+        hidden
+        type="file"
+        id="connect"
+      />
       <label
         htmlFor="connect"
         className="bg-blue py-[10px] px-[20px] rounded text-white cursor-pointer"

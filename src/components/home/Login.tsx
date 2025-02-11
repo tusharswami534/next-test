@@ -12,34 +12,23 @@ export const Login = () => {
     checkbox: false,
   };
   const [formData, setFormData] = useState(form);
-
   const [error, setError] = useState(false);
-  const [passwordError, setPasswordError] = useState("");
 
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
     if (isAuthenticated === "true") {
-      router.push("/dashboard?page=button-1");
+      router.push("/dashboard");
     }
   }, [router]);
 
   const handlerSubmit = (e: any) => {
     e.preventDefault();
     setError(true);
-    if (
-      formData.email !== "" &&
-      formData.password.length >= 6 &&
-      !passwordError
-    ) {
+    if (formData.email.includes("@") && formData.password.length >= 6) {
       setFormData(form);
       setError(false);
-      setPasswordError("");
       localStorage.setItem("isAuthenticated", "true");
-      router.push("/dashboard?page=button-1");
-    } else if (formData.password.length === 0) {
-      setPasswordError("password are required");
-    } else if (formData.password.length < 6) {
-      setPasswordError("Password must be at least 6 characters long");
+      router.push("/dashboard");
     }
   };
 
@@ -60,14 +49,14 @@ export const Login = () => {
           <p className="pl-[6px] text-gray text-sm leading-[30px] pb-[31px]">
             Welcome back! Please enter your details.
           </p>
-          <form onSubmit={handlerSubmit} className="w-full ">
+          <form className="w-full ">
             <label
               htmlFor="email"
               className=" font-medium leading-5 text-black-light"
             >
-              {error ? (
-                <p className="!text-red-900 text-sm font-bold leading-[30px]">
-                  Enter Your Email
+              {error && formData.email.includes("@") === false ? (
+                <p className="text-red-900 leading-[30px]">
+                  Email is required & proper format
                 </p>
               ) : (
                 <p className="text-black-light leading-[30px]">Email</p>
@@ -87,12 +76,12 @@ export const Login = () => {
               htmlFor="password"
               className=" font-medium leading-5 text-black-light"
             >
-              {passwordError ? (
-                <p className="!text-red-900 font-bold text-sm leading-[30px]">
-                  {passwordError}z
+              {error && formData.password.length < 6 ? (
+                <p className="text-red-900 leading-[30px]">
+                  password is required & must be 6 characters
                 </p>
               ) : (
-                <p className="text-black-light leading-[30px]">Password</p>
+                <p className="text-black-light leading-[30px]">password</p>
               )}
             </label>
             <input
@@ -128,12 +117,15 @@ export const Login = () => {
               </Link>
             </span>
             <button
-              type="submit"
-              className="w-full pt-[9px] bg-black-light pb-2.5 font-medium leading-6 text-sm text-white mt-6 rounded-[9px]"
+              onClick={handlerSubmit}
+              className="w-full pt-[9px] bg-black-light border border-solid border-black-light hover:text-black-light hover:bg-white transition-all duration-300 pb-2.5 font-medium leading-6 text-sm text-white mt-6 rounded-[9px]"
             >
               Sign In
             </button>
-            <button className="w-full pt-[9px] gap-2.5 pb-2.5 font-medium leading-6 text-sm text-black-light flex mt-1.5 rounded-[9px] justify-center items-center border border-solid border-gray-light">
+            <button
+              onClick={(e: any) => e.preventDefault()}
+              className="w-full pt-[9px] gap-2.5 pb-2.5 font-medium leading-6 text-sm transition-all duration-300 text-black-light hover:bg-black-light hover:text-white flex mt-1.5 rounded-[9px] justify-center items-center border border-solid border-gray-light"
+            >
               <Image
                 src={"/assets/images/png/google-logo.png"}
                 alt="google logo"
