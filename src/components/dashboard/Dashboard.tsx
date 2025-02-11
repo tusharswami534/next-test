@@ -61,10 +61,10 @@ const Dashboard = () => {
         </button>
       </div>
       <div className="w-full pt-20">
-        <div className="bg-yellow-500 max-md:flex max-md:items-center max-md:gap-5 min-h-20 py-5 px-3 w-full fixed top-0">
+        <div className="bg-yellow-500 z-50 max-md:flex max-md:items-center max-md:gap-5 min-h-20 py-5 px-3 w-full fixed top-0">
           <button
             onClick={handleOpen}
-            className="md:hidden max-md:size-6 relative !z-50 max-md:flex max-md:justify-between max-md:flex-col overflow-hidden"
+            className="md:hidden max-md:size-6 relative !z-[51] max-md:flex max-md:justify-between max-md:flex-col overflow-hidden"
           >
             <span
               className={`flex w-6 h-0.5 transition-all duration-300 bg-white ${

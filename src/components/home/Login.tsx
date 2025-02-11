@@ -6,11 +6,12 @@ import { useRouter } from "next/navigation";
 
 export const Login = () => {
   const router = useRouter();
-  const [formData, setFormData] = useState({
+  const form = {
     email: "",
     password: "",
     checkbox: false,
-  });
+  };
+  const [formData, setFormData] = useState(form);
 
   const [error, setError] = useState(false);
   const [passwordError, setPasswordError] = useState("");
@@ -18,7 +19,7 @@ export const Login = () => {
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
     if (isAuthenticated === "true") {
-      router.push("/dashboard");
+      router.push("/dashboard?page=button-1");
     }
   }, [router]);
 
@@ -30,15 +31,13 @@ export const Login = () => {
       formData.password.length >= 6 &&
       !passwordError
     ) {
-      setFormData({
-        email: "",
-        password: "",
-        checkbox: false,
-      });
+      setFormData(form);
       setError(false);
       setPasswordError("");
       localStorage.setItem("isAuthenticated", "true");
-      router.push("/dashboard");
+      router.push("/dashboard?page=button-1");
+    } else if (formData.password.length === 0) {
+      setPasswordError("password are required");
     } else if (formData.password.length < 6) {
       setPasswordError("Password must be at least 6 characters long");
     }
@@ -52,13 +51,13 @@ export const Login = () => {
             src={"/assets/images/png/page-logo.png"}
             width={167}
             height={31.71}
-            className="pointer-events-none absolute top-[19px] left-[14%] max-2xl:left-[0%] max-lg:relative max-lg:pb-[130px] max-md:pb-24 max-sm:pb-[90px]"
+            className="absolute top-[19px] left-[14%] max-2xl:left-[0%] max-lg:relative max-lg:pb-[130px] max-md:pb-24 max-sm:pb-[90px]"
             alt="page logo"
           />
           <h1 className="font-semibold text-3xl leading-[58.45px] text-dark tracking-[1.22px]">
             Welcome Back
           </h1>
-          <p className="pl-[6px] text-gray text-sm leading-[30px]">
+          <p className="pl-[6px] text-gray text-sm leading-[30px] pb-[31px]">
             Welcome back! Please enter your details.
           </p>
           <form onSubmit={handlerSubmit} className="w-full ">
@@ -88,9 +87,9 @@ export const Login = () => {
               htmlFor="password"
               className=" font-medium leading-5 text-black-light"
             >
-              {error || passwordError ? (
+              {passwordError ? (
                 <p className="!text-red-900 font-bold text-sm leading-[30px]">
-                  {passwordError || "Enter Your Password"}
+                  {passwordError}z
                 </p>
               ) : (
                 <p className="text-black-light leading-[30px]">Password</p>
@@ -140,6 +139,7 @@ export const Login = () => {
                 alt="google logo"
                 width={22}
                 height={22}
+                className="pointer-events-none"
               />
               Sign in with Google
             </button>
