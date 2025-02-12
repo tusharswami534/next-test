@@ -2,11 +2,17 @@
 import React, { useState } from "react";
 
 const ImageUpload = () => {
-  const [image, setImage] = useState([]);
+  const [image, setImage] = useState<[]>([]);
 
   const uploadImage = (e: any) => {
-    const url = URL.createObjectURL(e.target.files[0]);
-    setImage([...image, url] as any);
+    const file = e.target.files[0];
+    console.log(file);
+    if (file && file.type.startsWith("image/")) {
+      const url = URL.createObjectURL(file);
+      setImage([...image, url] as any);
+    } else {
+      alert("Please upload a valid image file.");
+    }
   };
 
   const deleteImage = () => {
@@ -18,13 +24,7 @@ const ImageUpload = () => {
       <h2 className="pb-5 text-2xl font-inter font-semibold">
         Add Your image{" "}
       </h2>
-      <input
-        accept="image/*"
-        onChange={uploadImage}
-        hidden
-        type="file"
-        id="connect"
-      />
+      <input onChange={uploadImage} hidden type="file" id="connect" />
       <label
         htmlFor="connect"
         className="bg-blue py-[10px] px-[20px] rounded text-white cursor-pointer"
