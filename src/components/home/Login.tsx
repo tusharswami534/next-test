@@ -17,7 +17,7 @@ export const Login = () => {
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
     if (isAuthenticated === "true") {
-      router.push("/dashboard");
+      router.push("/dashboard/button-1");
     }
   }, [router]);
 
@@ -28,7 +28,7 @@ export const Login = () => {
       setFormData(form);
       setError(false);
       localStorage.setItem("isAuthenticated", "true");
-      router.push("/dashboard");
+      router.push("/dashboard/button-1");
     }
   };
 

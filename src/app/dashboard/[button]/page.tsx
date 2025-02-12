@@ -1,16 +1,16 @@
 "use client";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import ImageUpload from "./ImageUpload";
 import { DASHBOARD_BUTTON_LIST } from "@/utils/helper";
 import Link from "next/link";
-import Calendly from "./Calendly";
-import QuestionOne from "./QuestionOne";
+import ImageUpload from "@/components/dashboard/ImageUpload";
+import Calendly from "@/components/dashboard/Calendly";
+import QuestionOne from "@/components/dashboard/QuestionOne";
 
 const Dashboard = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const page = searchParams.get("page");
+  const params = useParams();
+  const { button } = params;
 
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
@@ -45,7 +45,7 @@ const Dashboard = () => {
               key={index}
               onClick={() => setOpen(false)}
               className={`${
-                page === item.toLowerCase().replace(" ", "-") &&
+                button === item.toLowerCase().replace(" ", "-") &&
                 "bg-white text-black"
               } py-2 px-3 rounded-lg cursor-pointer hover:bg-white/50 transition-all duration-300 hover:text-black`}
             >
@@ -86,11 +86,11 @@ const Dashboard = () => {
             Welcome to Dashboard
           </h1>
         </div>
-        {page === "button-1" ? (
+        {button === "button-1" ? (
           <QuestionOne />
-        ) : page === "button-2" ? (
+        ) : button === "button-2" ? (
           <Calendly />
-        ) : page === "button-3" ? (
+        ) : button === "button-3" ? (
           <ImageUpload />
         ) : null}
       </div>
