@@ -7,7 +7,7 @@ import ImageUpload from "@/components/dashboard/ImageUpload";
 import Calendly from "@/components/dashboard/Calendly";
 import QuestionOne from "@/components/dashboard/QuestionOne";
 
-const Dashboard = () => {
+const Dashboards = () => {
   const router = useRouter();
   const params = useParams();
   const { button } = params;
@@ -98,4 +98,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Dashboards;

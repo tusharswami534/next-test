@@ -1,10 +1,10 @@
-import Dashboard from "@/components/dashboard/Dashboard";
 import React, { Suspense } from "react";
+import Dashboards from "./[button]/page";
 
 const page = () => {
   return (
     <Suspense>
-      <Dashboard />
+      <Dashboards />
     </Suspense>
   );
 };

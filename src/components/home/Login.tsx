@@ -13,7 +13,8 @@ export const Login = () => {
   };
   const [formData, setFormData] = useState(form);
   const [error, setError] = useState(false);
-
+  const EmailRegex =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
     if (isAuthenticated === "true") {
@@ -54,9 +55,12 @@ export const Login = () => {
               htmlFor="email"
               className=" font-medium leading-5 text-black-light"
             >
-              {error && formData.email.includes("@") === false ? (
+              {error && formData.email.length === 0 ? (
+                <p className="text-red-900 leading-[30px]">Email is required</p>
+              ) : !EmailRegex.test(formData.email) &&
+                formData.email.length > 0 ? (
                 <p className="text-red-900 leading-[30px]">
-                  Email is required & proper format
+                  Email are not valid
                 </p>
               ) : (
                 <p className="text-black-light leading-[30px]">Email</p>
@@ -76,9 +80,20 @@ export const Login = () => {
               htmlFor="password"
               className=" font-medium leading-5 text-black-light"
             >
-              {error && formData.password.length < 6 ? (
+              {/* {error && formData.password.length < 6 ? (
                 <p className="text-red-900 leading-[30px]">
                   password is required & must be 6 characters
+                </p>
+              ) : (
+                <p className="text-black-light leading-[30px]">password</p>
+              )} */}
+              {error && formData.password.length === 0 ? (
+                <p className="text-red-900 leading-[30px]">
+                  password is required
+                </p>
+              ) : formData.password.length < 6  && formData.password.length > 0 ? (
+                <p className="text-red-900 leading-[30px]">
+                  password must be 6 characters
                 </p>
               ) : (
                 <p className="text-black-light leading-[30px]">password</p>
